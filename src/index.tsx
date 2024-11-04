@@ -10,7 +10,10 @@ type ScalarDict = {
 	[key: string]: Scalar;
 };
 
-export type CellProps = React.PropsWithChildren<{ column: number }>;
+export type CellProps = React.PropsWithChildren<{
+	column: number;
+	value: Scalar;
+}>;
 
 export type TableProps<T extends ScalarDict> = {
 	/**
@@ -305,7 +308,7 @@ function row<T extends ScalarDict>(
 						const key = `${props.key}-empty-${column.key}`;
 
 						return (
-							<config.cell key={key} column={colI}>
+							<config.cell key={key} column={colI} value={value}>
 								{skeleton.line.repeat(column.width)}
 							</config.cell>
 						);
@@ -318,7 +321,7 @@ function row<T extends ScalarDict>(
 
 						return (
 							/* prettier-ignore */
-							<config.cell key={key} column={colI}>
+							<config.cell key={key} column={colI} value={value}>
 								{`${skeleton.line.repeat(ml)}${String(value)}${skeleton.line.repeat(mr)}`}
 							</config.cell>
 						);
