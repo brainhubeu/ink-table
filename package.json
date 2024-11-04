@@ -10,7 +10,8 @@
 	"scripts": {
 		"build": "tsc",
 		"coverage": "codecov",
-		"test": "jest"
+		"test": "jest",
+		"prepare": "npm run build"
 	},
 	"files": ["dist"],
 	"keywords": [
